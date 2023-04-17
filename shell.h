@@ -168,9 +168,9 @@ int renumber_history(info_t *info);
 /* toem_lists.c */
 list_t *addnode(list_t **, const char *, int);
 list_t *addnodeend(list_t **, const char *, int);
-size_t printlist_str(const list_t *);
-int delete_node_at_index(list_t **, unsigned int);
-void free_list(list_t **);
+size_t printlist_str(const list_t *h1);
+int delete_node_at_index(list_t **head, unsigned int ind);
+void freelist(list_t **headptr);
 
 /* toem_lists1.c */
 size_t list_size(const list_t *);
