@@ -187,7 +187,7 @@ int replace_vars(info_t *);
 int replace_strings(char **, char *);
 
 /* toem_memory.c */
-int bfree(void **);
+int bfrees(void **);
 
 /* toem_astoi.c */
 int interact(info_t *);

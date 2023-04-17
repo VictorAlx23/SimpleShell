@@ -6,11 +6,11 @@
  * @nums: node index used by history
  * Return: list size
  */
-list_t *addnode(list_t **, const char *, int)
+list_t *addnode(list_t **head, const char *strs, int nums)
 {
 	list_t *n_head;
 
-	if(!head)
+	if (!head)
 		return (NULL);
 	n_head = malloc(sizeof(list_t));
 	if (!n_head)
@@ -37,11 +37,11 @@ list_t *addnode(list_t **, const char *, int)
  * @nums: node index used by history
  * Return: list size
  */
-list_t *addnodeend(list_t **, const char *, int)
+list_t *addnodeend(list_t **head, const char *strs, int nums)
 {
 	list_t *n_node, *node;
 
-	if(!head)
+	if (!head)
 		return (NULL);
 	node = *head;
 	n_node = malloc(sizeof(list_t));
@@ -79,7 +79,7 @@ size_t printlist_str(const list_t *h1)
 
 	while (h1)
 	{
-		_puts(h1->strs ? h1->strs: "(nil)");
+		_puts(h1->strs ? h1->strs : "(nil)");
 		_puts("\n");
 		h1 = h1->next;
 		index++;
