@@ -226,6 +226,6 @@ char *_getenvs(info_t *, const char *);
 int _shellenv(info_t *);
 int _shsetenv(info_t *);
 int _shunsetenv(info_t *);
-int populate_env_list(info_t *);
+int populate_env_lists(info_t *);
 
 #endif
