@@ -16,9 +16,9 @@ int hsh(info_t *_info, char **av)
 	{
 		clear_info(_info);
 
-		if (interactive(_info))
+		if (interact(_info))
 			_puts("$");
-		_eputchar(BUF_FLUSH);
+		eputchar(BUFF_FLUSH);
 		i = get_input(_info);
 
 		if (i != -1)
@@ -28,13 +28,13 @@ int hsh(info_t *_info, char **av)
 			if (r_built_in == -1)
 				find_cmd(_info);
 		}
-		else if (interactive(_info))
+		else if (interact(_info))
 			_putchar('\n');
 		free_info(_info, 0);
 	}
 	write_history(_info);
 	free_info(_info, 1);
-	if (!interactive(_info) && _info->status)
+	if (!interact(_info) && _info->status)
 		exit(_info->status);
 	if (r_built_in == -2)
 	{
@@ -57,14 +57,14 @@ int find_built_in(info_t *_info)
 	int r_built_in = -1, int nav = 0;
 
 	built_in_table table[] = {
-		{"exit", _myexit},
-		{"env", _myenv},
-		{"help", _myhelp},
-		{"history", _myhistory},
-		{"setenv", _mysetenv},
-		{"unsetenv", _myunsetenv},
-		{"cd", _mycd},
-		{"alias", _myalias},
+		{"exit", _shellexit},
+		{"env", shellenv},
+		{"help", _shellhelp},
+		{"history", _shellhistory},
+		{"setenv", _shsetenv},
+		{"unsetenv", _shunsetenv},
+		{"cd", _shellcd},
+		{"alias", _shellalias},
 		{NULL, NULL}
 	};
 
@@ -117,7 +117,7 @@ void find_cmd(info_t *_info)
 	}
 	else
 	{
-		if ((interactive(_info) || _getenv(_info, "PATH=")
+		if ((interact(_info) || _getenv(_info, "PATH=")
 					|| _info->argv[0][0] == '/')
 				&& is_cmd(_info, _info->argv[0]))
 			fork_cmd(_info);
