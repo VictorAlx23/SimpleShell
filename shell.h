@@ -106,22 +106,22 @@ typedef struct built_in
 	int (*func)(info_t *);
 } built_in_table;
 
-/* toem_shloop.c */
+/* sh_loop.c file*/
 int hsh(info_t *, char **);
 int find_built_in(info_t *);
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
 
-/*toem_parser.c */
+/* parsing.c file*/
 int is_cmd(info_t *, char *);
 char *dup_chars(char *, int, int);
 char *find_path(info_t *, char *, char *);
 
-/* toem_error.c */
-void _eputs(char *);
-int _eputchar(char *);
-int _putsfd(char *strs, int fd);
-int _putfd(char c, int fd);
+/* error_helper.c */
+void eputs(char *);
+int eputchar(char *);
+int putsfd(char *, int);
+int putfd(char, int);
 
 /* loophsh.c */
 int loophsh(char **);
@@ -165,14 +165,14 @@ int read_history(info_t *info);
 int build_history_list(info_t *info, char *buff, int linecount);
 int renumber_history(info_t *info);
 
-/* toem_lists.c */
+/* lists_helper.c */
 list_t *addnode(list_t **, const char *, int);
 list_t *addnodeend(list_t **, const char *, int);
 size_t printlist_str(const list_t *h1);
 int delete_node_at_index(list_t **head, unsigned int ind);
 void freelist(list_t **headptr);
 
-/* toem_lists1.c */
+/* lists_helper1.c */
 size_t list_size(const list_t *);
 char **list_to_string(list_t *);
 size_t prints_list(const list_t *);
