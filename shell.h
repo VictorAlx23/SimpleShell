@@ -137,11 +137,11 @@ int _strcmp(char *, char *);
 char *strcat(char *, char *);
 char *starts_with(const char *, const char *);
 
-/* toem_strings1.c */
+/* strings_helper1.c */
 char *_strcpy(char *, char *);
-char *_strdup(const char *);
-void _puts(char *);
 int _putchar(char);
+void _puts(char *);
+char *_strdup(const char *);
 
 /* toem_tokenizer.c */
 char **strtow(char *, char *);
