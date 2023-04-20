@@ -123,13 +123,12 @@ int eputchar(char *);
 int putsfd(char *, int);
 int putfd(char, int);
 
-/* loophsh.c */
-int loophsh(char **);
-
 /*Exit_Helper.c */
 char *_strncat(char *, char *, int);
-char *_strncpy(char *, char *, int);
 char *_strchr(char *, char);
+
+/* exit_helper1.c */
+char *_strncpy(char *, char *, int);
 
 /* strings_helper.c */
 int _strlen(char *);
