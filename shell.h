@@ -126,7 +126,7 @@ int putfd(char, int);
 /* loophsh.c */
 int loophsh(char **);
 
-/*toem_exit.c */
+/*Exit_Helper.c */
 char *_strncat(char *, char *, int);
 char *_strncpy(char *, char *, int);
 char *_strchr(char *, char);
