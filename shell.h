@@ -131,11 +131,11 @@ char *_strncat(char *, char *, int);
 char *_strncpy(char *, char *, int);
 char *_strchr(char *, char);
 
-/* toem_strings.c */
+/* strings_helper.c */
 int _strlen(char *);
 int _strcmp(char *, char *);
-char *starts_with(const char *, const char *);
 char *strcat(char *, char *);
+char *starts_with(const char *, const char *);
 
 /* toem_strings1.c */
 char *_strcpy(char *, char *);
