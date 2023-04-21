@@ -146,8 +146,8 @@ char *_strdup(const char *);
 char **strtow(char *, char *);
 char **strtow2(char *, char);
 
-/* toem_reallocs.c */
-char *_mamset(char *, char, unsigned int);
+/* reallocs_helper.c */
+char *_memset(char *, char, unsigned int);
 void ffree(char **);
 void *_reallocs(void *, unsigned int, unsigned int);
 
