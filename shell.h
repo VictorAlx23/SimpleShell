@@ -142,7 +142,7 @@ int _putchar(char);
 void _puts(char *);
 char *_strdup(const char *);
 
-/* toem_tokenizer.c */
+/* token_helper.c */
 char **strtow(char *, char *);
 char **strtow2(char *, char);
 
