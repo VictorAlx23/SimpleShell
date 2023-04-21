@@ -151,18 +151,18 @@ char *_memset(char *, char, unsigned int);
 void ffree(char **);
 void *_reallocs(void *, unsigned int, unsigned int);
 
-/* toem_getenvs.c */
-char **get_env(info_t*);
+/* getenvs_helper.c */
+char **get_env(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
 
 
-/*toem_historys.c */
-char *get_history_file(info_t *info);
-int write_history(info_t *info);
-int read_history(info_t *info);
-int build_history_list(info_t *info, char *buff, int linecount);
-int renumber_history(info_t *info);
+/*historys_helper.c */
+char *get_history_file(info_t *);
+int write_history(info_t *);
+int read_history(info_t *);
+int build_history_list(info_t *, char *, int);
+int renumber_history(info_t *);
 
 /* lists_helper.c */
 list_t *addnode(list_t **, const char *, int);
@@ -178,49 +178,49 @@ size_t prints_list(const list_t *);
 list_t *node_starts_with(list_t *, char *, char);
 ssize_t get_node_index(list_t *, list_t *);
 
-/*toem_vars.c */
+/* variables_helper.c */
 int is_chains(info_t *, char *, size_t *);
 void check_chains(info_t *, char *, size_t *, size_t, size_t);
 int replace_alias(info_t *);
 int replace_vars(info_t *);
 int replace_strings(char **, char *);
 
-/* toem_memory.c */
+/* memory_helper.c */
 int bfrees(void **);
 
-/* toem_astoi.c */
+/* _astoi_helper.c */
 int interact(info_t *);
 int is_delimt(char, char *);
 int is_alpha(int);
 int _astoi(char *);
 
-/* toem_error1.c */
+/* error1_helper.c */
 int _errastoi(char *);
 void prints_error(info_t *, char *);
 int print_deci(int, int);
 char *converts_num(long int, int, int);
 void remove_comments(char *);
 
-/* toem_built_in.c */
+/* built_in_helper.c */
 int _shellexit(info_t *);
 int _shellcd(info_t *);
 int _shellhelp(info_t *);
 
-/*toem_built_in1.c */
+/*built_in1_helper.c */
 int _shellhistory(info_t *);
 int _shellalias(info_t *);
 
-/* toem_getlines.c */
+/* getlines_helper.c */
 ssize_t gets_input(info_t *);
 int _getlines(info_t *, char **, size_t *);
 void siginHandler(int);
 
-/* _getinfo.c */
+/* getinfo_helper.c */
 void clears_info(info_t *);
 void sets_info(info_t *, char **);
 void free_info(info_t *, int);
 
-/* toem_environ.c */
+/* environs_helper.c */
 char *_getenvs(info_t *, const char *);
 int _shellenv(info_t *);
 int _shsetenv(info_t *);
