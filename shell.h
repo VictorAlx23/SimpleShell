@@ -211,9 +211,11 @@ int _shellhistory(info_t *);
 int _shellalias(info_t *);
 
 /* getlines_helper.c */
+ssize_t input_buffer(info_t *, char **, size_t *);
 ssize_t gets_input(info_t *);
+ssize_t read_buffer(info_t *, char *, size_t *);
 int _getlines(info_t *, char **, size_t *);
-void siginHandler(int);
+void s_Handler(int);
 
 /* getinfo_helper.c */
 void clears_info(info_t *);
