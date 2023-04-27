@@ -10,7 +10,7 @@ char **get_env(info_t *_info)
 {
 	if (!_info->environs || _info->env_changed)
 	{
-		_info->environs = list_to_strings(_info->envs);
+		_info->environs = list_to_string(_info->envs);
 		_info->env_changed = 0;
 	}
 	return (_info->environs);
@@ -82,7 +82,7 @@ int _setenv(info_t *_info, char *_variable, char *var_data)
 		}
 		head = head->next;
 	}
-	add_node_end(&(_info->envs), buffer, 0);
+	addnodeend(&(_info->envs), buffer, 0);
 	free(buffer);
 	_info->env_changed = 1;
 	return (0);
