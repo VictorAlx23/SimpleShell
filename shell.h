@@ -10,6 +10,7 @@
 #include <limits.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <ctype.h>
 
 /* for read/write buffers*/
 #define READ_BUFF_SIZE 1024
@@ -92,9 +93,10 @@ typedef struct pass_info
 	int readfd;
 } info_t;
 
-#define INFO_INIT\
+#define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-	0, 0, 0}
+NULL}
+
 /**
  * struct built_in - contains a builtin string and related function
  * @type: the builtin command flag
@@ -118,22 +120,23 @@ char *dup_chars(char *, int, int);
 char *find_path(info_t *, char *, char *);
 
 /* error_helper.c */
-void eputs(char *);
-int eputchar(char *);
-int putsfd(char *, int);
-int putfd(char, int);
+void _eputs(char *);
+int _eputchar(char);
+int _putsfd(char *, int);
+int _putfd(char, int);
 
 /*Exit_Helper.c */
 char *_strncat(char *, char *, int);
-char *_strchr(char *, char);
+char *_strchr(char *, int);
 
 /* exit_helper1.c */
 char *_strncpy(char *, char *, int);
+int main(int ac, char **av);
 
 /* strings_helper.c */
 int _strlen(char *);
 int _strcmp(char *, char *);
-char *strcat(char *, char *);
+char *_strcat(char *, char *);
 char *starts_with(const char *, const char *);
 
 /* strings_helper1.c */
@@ -167,7 +170,7 @@ int renumber_history(info_t *);
 /* lists_helper.c */
 list_t *addnode(list_t **, const char *, int);
 list_t *addnodeend(list_t **, const char *, int);
-size_t printlist_str(const list_t *h1);
+size_t printlist_str(const list_t *);
 int delete_node_at_index(list_t **head, unsigned int ind);
 void freelist(list_t **headptr);
 
@@ -190,7 +193,7 @@ int bfrees(void **);
 
 /* _astoi_helper.c */
 int interact(info_t *);
-int is_delimt(char, char *);
+int is_delim(char, char *);
 int is_alpha(int);
 int _astoi(char *);
 

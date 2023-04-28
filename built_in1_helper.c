@@ -12,13 +12,13 @@ int _shellhistory(info_t *info)
 	return (0);
 }
 /**
-* unstrset_alias - sets alias to string
+* _unstrset_alias - sets alias to string
 * @info: parameter struct
 * @strs: the string alias
 *
 * Return: Always 0 on success, 1 on error
 */
-int unstrset_alias(info_t *info, char *strs)
+int _unstrset_alias(info_t *info, char *strs)
 {
 	char *pn, ch;
 	int rets;
@@ -29,7 +29,7 @@ int unstrset_alias(info_t *info, char *strs)
 	ch = *pn;
 	*pn = 0;
 	rets = delete_node_at_index(&(info->alias),
-	gets_node_index(info->alias, node_starts_with(info->alias, str, -1)));
+	get_node_index(info->alias, node_starts_with(info->alias, strs, -1)));
 	*pn = ch;
 	return (rets);
 }
@@ -48,8 +48,8 @@ int strset_alias(info_t *info, char *strs)
 	if (!pn)
 		return (1);
 	if (!*++pn)
-		return (unset_alias(info, str));
-	unstrset_alias(info, strs);
+		return (strset_alias(info, strs));
+	_unstrset_alias(info, strs);
 	return (addnodeend(&(info->alias), strs, 0) == NULL);
 }
 /**
@@ -72,7 +72,7 @@ int prints_alias(list_t *node)
 		_puts("'\n");
 		return (0);
 	}
-return (1);
+	return (1);
 }
 /**
 * _shalias - mimics the alias builtin (man alias)
@@ -100,9 +100,9 @@ int _shalias(info_t *info)
 	{
 		pn = _strchr(info->argv[index], '=');
 		if (pn)
-			set_alias(info, info->argv[i]);
+			strset_alias(info, info->argv[index]);
 		else
-			prints_alias(node_starts_with(info->alias, info->argv[i], '='));
+			prints_alias(node_starts_with(info->alias, info->argv[index], '='));
 	}
 	return (0);
 }

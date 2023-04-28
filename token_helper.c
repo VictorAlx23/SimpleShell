@@ -9,23 +9,23 @@
 
 char **strtow(char *str, char *delim)
 {
-	char **str;
+	char **words;
 	int index, j, iter, nav, num = 0;
 
 	if (str == NULL || str[0] == 0)
 		return (NULL);
 	if (!delim)
 		delim = " ";
-	while (str[index] != '\0')
+	index = 0;
+	for (index = 0; str[index] != '\0'; index++)
 	{
-		if (!is_delim(str[index], delim && (is_delim(str[index + 1],
-							delim) || !str[index + 1]))
-			num++, index++;
+		if (!is_delim(str[index], delim) && (is_delim(str[index + 1], delim) || !str[index + 1]))
+			num++;
 	}
 	if (num == 0)
 		return (NULL);
-	str = malloc(sizeof(char *) * (num + 1));
-	if (!str)
+	words = malloc(sizeof(char *) * (num + 1));
+	if (!words)
 		return (NULL);
 	for (index = 0, j = 0; j < num; j++)
 	{
@@ -34,34 +34,34 @@ char **strtow(char *str, char *delim)
 		iter = 0;
 		while (!is_delim(str[index + iter], delim) && str[index + iter])
 			iter++;
-		str[j] = malloc(sizeof(char) * (iter + 1));
-		if (!str[j])
+		words[j] = malloc(sizeof(char) * (iter + 1));
+		if (!words[j])
 		{
 			iter = 0;
 			while (iter < j)
-				free(str[iter]), iter++;
-			free(str);
+				free(words[iter]), iter++;
+			free(words);
 			return (NULL);
 		}
 
 		for (nav = 0; nav < iter; nav++)
-			str[j][nav] = str[index++];
-		str[j][nav] = 0;
+			words[j][nav] = str[index++];
+		words[j][nav] = 0;
 	}
-	str[j] = NULL;
-	return (str);
+	words[j] = NULL;
+	return (words);
 }
 
 /**
-* strtow2 - break string into words
+* _strtow2 - break string into words
 * @str: string
 * @delim: delimiter
 * Return: pointer to array of strings, otherwise NULL
 */
 
-char **strtow2(char *str, char delim)
+char **_strtow2(char *str, char delim)
 {
-	char **str;
+	char **words;
 	int index = 0, j = 0, iter, nav, num = 0;
 
 	if (str == NULL || str[0] == 0)
@@ -74,8 +74,8 @@ char **strtow2(char *str, char delim)
 	}
 	if (num == 0)
 		return (NULL);
-	str = malloc(sizeof(char *) * (num + 1));
-	if (!str)
+	words = malloc(sizeof(char *) * (num + 1));
+	if (!words)
 		return (NULL);
 	for (index = 0, j = 0; j < num; j++)
 	{
@@ -85,18 +85,18 @@ char **strtow2(char *str, char delim)
 		while (str[index + iter] != delim && str[index + iter]
 				&& str[index + iter] != delim)
 			iter++;
-		str[j] = malloc(sizeof(char) * (iter + 1));
-		if (!str[j])
+		words[j] = malloc(sizeof(char) * (iter + 1));
+		if (!words[j])
 		{
 			for (iter = 0; iter < j; iter++)
-				free(str[iter]);
-			free(str);
+				free(words[iter]);
+			free(words);
 			return (NULL);
 		}
 		for (nav = 0; nav < iter; nav++)
-			str[j][nav] = str[index++];
-		str[j][nav] = 0;
+			words[j][nav] = str[index++];
+		words[j][nav] = 0;
 	}
-	str[j] = NULL;
-	return (str);
+	words[j] = NULL;
+	return (words);
 }
