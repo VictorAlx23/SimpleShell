@@ -14,17 +14,17 @@ int hsh(info_t *_info, char **av)
 
 	while (i != -1 && r_built_in != -2)
 	{
-		clear_info(_info);
+		clears_info(_info);
 
 		if (interact(_info))
 			_puts("$");
 		eputchar(BUFF_FLUSH);
-		i = get_input(_info);
+		i = gets_input(_info);
 
 		if (i != -1)
 		{
-			set_info(_info, av);
-			r_built_in = find_builtin(_info);
+			sets_info(_info, av);
+			r_built_in = find_built_in(_info);
 			if (r_built_in == -1)
 				find_cmd(_info);
 		}
@@ -40,7 +40,7 @@ int hsh(info_t *_info, char **av)
 	{
 		if (_info->err_num == -1)
 			exit(_info->status);
-		exit(_info->err_num);
+		exit(_info->err_nums);
 	}
 	return (r_built_in);
 }
@@ -90,9 +90,9 @@ int find_built_in(info_t *_info)
 void find_cmd(info_t *_info)
 {
 	int ind = 0, nav = 0;
-	char *_path = NULL;
+	char *path = NULL;
 
-	_info->_path = _info->argv[0];
+	_info->path = _info->argv[0];
 	if (_info->linecount_flag == 1)
 	{
 		_info->line_count++;
@@ -100,7 +100,7 @@ void find_cmd(info_t *_info)
 	}
 	while (_info->arg[ind])
 	{
-		if (!is_delim(_info->arg[ind], "\t\n"))
+		if (!is_delimt(_info->arg[ind], "\t\n"))
 		{
 			nav++;
 			ind++;
@@ -108,23 +108,23 @@ void find_cmd(info_t *_info)
 		if (!nav)
 			return;
 	}
-	_path = find_path(_info, _getenv(_info, "PATH="), _info->arg[0]);
+	path = find_path(_info, getenv(_info, "PATH="), _info->arg[0]);
 
-	if (_path)
+	if (path)
 	{
-		_info->path = _path;
+		_info->path = path;
 		fork_cmd(_info);
 	}
 	else
 	{
-		if ((interact(_info) || _getenv(_info, "PATH=")
+		if ((interact(_info) || getenv(_info, "PATH=")
 					|| _info->argv[0][0] == '/')
 				&& is_cmd(_info, _info->argv[0]))
 			fork_cmd(_info);
 		else if (*(_info->arg) != '\n')
 		{
 			_info->status = 127;
-			print_error(_info, "not found\n");
+			prints_error(_info, "not found\n");
 		}
 	}
 }
@@ -147,7 +147,7 @@ void fork_cmd(info_t *_info)
 	}
 	if (_childpid == 0)
 	{
-		if (execve(_info->path, _info->argv, get_environ(_info))
+		if (execve(_info->path, _info->argv, get_env(_info))
 				== -1)
 		{
 			free_info(_info, 1);
@@ -163,7 +163,7 @@ void fork_cmd(info_t *_info)
 		{
 			_info->status == WEXITSTATUS(_info->status);
 			if (_info->status == 126)
-				print_error(_info, "Permission denied\n");
+				prints_error(_info, "Permission denied\n");
 		}
 	}
 }
