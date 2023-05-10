@@ -155,7 +155,7 @@ void ffree(char **);
 void *_reallocs(void *, unsigned int, unsigned int);
 
 /* getenvs_helper.c */
-char **get_env(info_t *);
+char **get_environs(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
 

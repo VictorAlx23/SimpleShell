@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
-* get_env - string copy of the environment
+* get_environs - string copy of the environment
 * @_info: structure of information
 * Return: 0 (success)
 */
 
-char **get_env(info_t *_info)
+char **get_environs(info_t *_info)
 {
 	if (!_info->environs || _info->env_changed)
 	{
