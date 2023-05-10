@@ -17,14 +17,14 @@ int _shellexit(info_t *info)
 		{
 			info->status = 2;
 			prints_error(info, "Illegal number: ");
-			_eputs(info->argv[1]);
-			_eputchar('\n');
+			eputs(info->argv[1]);
+			eputchar('\n');
 			return (1);
 		}
-		info->errs_num = _errastoi(info->argv[1]);
+		info->err_nums = _errastoi(info->argv[1]);
 		return (-2);
 	}
-	info->errs_num = -1;
+	info->err_nums = -1;
 	return (-2);
 }
 /**
@@ -67,7 +67,7 @@ int _shellcd(info_t *info)
 	if (chdir_rets == -1)
 	{
 		prints_error(info, "can't cd to ");
-		_eputs(info->argv[1]), _eputchar('\n');
+		eputs(info->argv[1]), eputchar('\n');
 	}
 	else
 	{

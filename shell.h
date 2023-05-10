@@ -92,7 +92,7 @@ typedef struct pass_info
 	int readfd;
 } info_t;
 
-#define INFO_INIT\
+#define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 	0, 0, 0}
 /**
@@ -133,7 +133,7 @@ char *_strncpy(char *, char *, int);
 /* strings_helper.c */
 int _strlen(char *);
 int _strcmp(char *, char *);
-char *strcat(char *, char *);
+char *_strcat(char *, char *);
 char *starts_with(const char *, const char *);
 
 /* strings_helper1.c */
@@ -209,7 +209,8 @@ int _shellhelp(info_t *);
 /*built_in1_helper.c */
 int _shellhistory(info_t *);
 int _shellalias(info_t *);
-
+int strset_alias(info_t *, char *);
+int unstrset_alias(info_t *, char *);
 /* getlines_helper.c */
 ssize_t input_buffer(info_t *, char **, size_t *);
 ssize_t gets_input(info_t *);
