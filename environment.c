@@ -7,24 +7,24 @@
  */
 int _shellenv(info_t *info)
 {
-	prints_lists_str(info->env);
+	printlist_str(info->envs);
 	return (0);
 }
 /**
- * _valenv - gets the value of an enviroment variable
+ * _getenvs - gets the value of an enviroment variable
  * @info: Structure containing potentialo arguments.
  * Used to maintain constant function prototype
  * @name: enviroment variable name
  * Return: Value of the environment
  */
-char *_valenv(info_t *info, const char *name)
+char *_getenvs(info_t *info, const char *name)
 {
-	list_t *node = info->env;
+	list_t *node = info->envs;
 	char *p;
 
 	while (node)
 	{
-		p = start_with(node->str, name);
+		p = starts_with(node->strs, name);
 		if (p && *p)
 			return (p);
 		node = node->next;
@@ -66,6 +66,6 @@ int populate_env_lists(info_t *info)
 		addnodeend(&node, environs[index], 0);
 		index++;
 	}
-	info->env = node;
+	info->envs = node;
 	return (0);
 }

@@ -17,8 +17,13 @@ int _shellexit(info_t *info)
 		{
 			info->status = 2;
 			prints_error(info, "Illegal number: ");
+<<<<<<< HEAD
 			eputs(info->argv[1]);
 			eputchar('\n');
+=======
+			_eputs(info->argv[1]);
+			_eputchar("\n");
+>>>>>>> f4177c02e893a10e2ea2b5d8843704b00869868f
 			return (1);
 		}
 		info->err_nums = _errastoi(info->argv[1]);
@@ -43,35 +48,39 @@ int _shellcd(info_t *info)
 		_puts("TODO: >>getcwd failure emsg here<<\n");
 	if (!info->argv[1])
 	{
-		dir = _valenv(info, "HOME=");
+		dir = _getenvs(info, "HOME=");
 		if (!dir)
 		chdir_rets = /* TODO: what should this be? */
-		chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
+		chdir((dir = _getenvs(info, "PWD=")) ? dir : "/");
 		else
 		chdir_rets = chdir(dir);
 	}
 	else if (_strcmp(info->argv[1], "-") == 0)
 	{
-		if (!_valenv(info, "OLDPWD="))
-	{
-	_puts(str);
-	_putchar('\n');
-	return (1);
-	}
-	_puts(_valenv(info, "OLDPWD=")), _putchar('\n');
-	chdir_rets =  /* TODO: what should this be? */
-	chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
+		if (!_getenvs(info, "OLDPWD="))
+		{
+			_puts(str);
+			_putchar('\n');
+			return (1);
+		}
+		_puts(_getenvs(info, "OLDPWD=")), _putchar('\n');
+		chdir_rets =  /* TODO: what should this be? */
+		chdir((dir = _getenvs(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
 		chdir_rets = chdir(info->argv[1]);
 	if (chdir_rets == -1)
 	{
 		prints_error(info, "can't cd to ");
+<<<<<<< HEAD
 		eputs(info->argv[1]), eputchar('\n');
+=======
+		_eputs(info->argv[1]), _putchar('\n');
+>>>>>>> f4177c02e893a10e2ea2b5d8843704b00869868f
 	}
 	else
 	{
-		_setenv(info, "OLDPWD", _getenv(info, "PWD="));
+		_setenv(info, "OLDPWD", _getenvs(info, "PWD="));
 		_setenv(info, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);
@@ -84,11 +93,11 @@ int _shellcd(info_t *info)
 */
 int _shellhelp(info_t *info)
 {
-	char **arg_arrays;
-	arg_arrays = info->argv;
+	char **_arg_arrays;
+	_arg_arrays = info->argv;
 
 	_puts("help call works. Function not yet implemented \n");
 	if (0)
-		_puts(*arg_array);
+		_puts(*_arg_arrays);
 	return (0);
 }

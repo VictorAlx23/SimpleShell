@@ -12,13 +12,13 @@ int _shellhistory(info_t *info)
 	return (0);
 }
 /**
-* unstrset_alias - sets alias to string
+* _unstrset_alias - sets alias to string
 * @info: parameter struct
 * @strs: the string alias
 *
 * Return: Always 0 on success, 1 on error
 */
-int unstrset_alias(info_t *info, char *strs)
+int _unstrset_alias(info_t *info, char *strs)
 {
 	char *pn, ch;
 	int rets;
@@ -50,8 +50,13 @@ int strset_alias(info_t *info, char *strs)
 	if (!pn)
 		return (1);
 	if (!*++pn)
+<<<<<<< HEAD
 		return (unstrset_alias(info, strs));
 	unstrset_alias(info, strs);
+=======
+		return (strset_alias(info, strs));
+	_unstrset_alias(info, strs);
+>>>>>>> f4177c02e893a10e2ea2b5d8843704b00869868f
 	return (addnodeend(&(info->alias), strs, 0) == NULL);
 }
 /**
@@ -74,7 +79,7 @@ int prints_alias(list_t *node)
 		_puts("'\n");
 		return (0);
 	}
-return (1);
+	return (1);
 }
 /**
 * _shalias - mimics the alias builtin (man alias)

@@ -11,7 +11,7 @@ int _errastoi(char *str)
 	unsigned long int result = 0;
 
 	if (*str == '+')
-		s++;
+		str++;
 	while (str[index] != '\0')
 	{
 		if (str[index] >= '0' && str[index] <= '9')
@@ -38,7 +38,7 @@ void prints_error(info_t *info, char *estr)
 {
 	_eputs(info->fname);
 	_eputs(" ");
-	print_d(info->line_count, STDERR_FILENO);
+	print_deci(info->line_count, STDERR_FILENO);
 	_eputs(" ");
 	_eputs(info->argv[0]);
 	_eputs(" ");
@@ -60,7 +60,7 @@ int print_deci(int input, int fd)
 		_putchar = _eputchar;
 	if (input < 0)
 	{
-		_abs = input;
+		_abs_ = input;
 		_putchar('-');
 		counts++;
 	}
@@ -69,17 +69,17 @@ int print_deci(int input, int fd)
 	currents = _abs_;
 	for (index = 1000000000; index > 1; index /= 10)
 	{
-		if (_abs / index)
+		if (_abs_ / index)
 		{
 			_putchar('0' + currents / index);
 			counts++;
 		}
-		current %= index;
+		currents %= index;
 	}
-	_putchar('0' + current);
-	count++;
+	_putchar('0' + currents);
+	counts++;
 
-	return (count);
+	return (counts);
 }
 /**
  * converts_num - converter function, a clone of itoa
@@ -96,12 +96,12 @@ char *converts_num(long int num, int base, int flags)
 	char *ptr;
 	unsigned long n = num;
 
-	if (!(flags & CONVERTS_UNSIGNED) && num < 0)
+	if (!(flags & CONVERT_UNSIGNED) && num < 0)
 	{
-		N = -num;
+		n = -num;
 		sign = '-';
 	}
-	arrays =  flags & CONVERTS_LOWERCASE ? "0123456789abcdef" :
+	arrays =  flags & CONVERT_LOWERCASE ? "0123456789abcdef" :
 		"0123456789ABCDEF";
 	ptr = &buffer[49];
 	*ptr = '\0';
@@ -109,7 +109,7 @@ char *converts_num(long int num, int base, int flags)
 	do {
 		*--ptr = arrays[n % base];
 		n /= base;
-	} while (N != 0);
+	} while (n != 0);
 
 	if (sign)
 		*--ptr = sign;
@@ -124,10 +124,13 @@ void removes_comments(char *buff)
 {
 	int index = 0;
 
-	while (buff[index] != '\0'; i++)
+	while (buff[index] != '\0')
+	{
 		if (buff[index] == '#' && (!index || buff[index - 1] == ' '))
 		{
 			buff[index] = '\0';
 			break;
 		}
+		index++;
+	}
 }
