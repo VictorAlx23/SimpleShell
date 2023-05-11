@@ -1,39 +1,39 @@
 #include "shell.h"
 
 /**
-*eputs - function for printing a string
-* @s: string
+*_eputs - function for printing a string
+* @str: string
 */
 
-void eputs(char *s)
+void _eputs(char *str)
 {
-	int ind;
+	int index;
 
-	if (!s)
+	if (!str)
 		return;
 
-	for (ind = 0; s[ind] != '\0'; ind++)
-		eputchar(s[ind]);
+	for (index = 0; str[index] != '\0'; index++)
+		_eputchar(str[index]);
 }
 
 /**
-* eputchar - writes a character to stderr
+* _eputchar - writes a character to stderr
 * @ch: character
 * Return: 1 (success), -1 on error
 */
 
-int eputchar(char ch)
+int _eputchar(char ch)
 {
 	static char buffer[WRITE_BUFF_SIZE];
-	static int ind;
+	static int index;
 
-	if (ch == BUFF_FLUSH || ind >= WRITE_BUFF_SIZE)
+	if (ch == BUFF_FLUSH || index >= WRITE_BUFF_SIZE)
 	{
-		write(2, buffer, ind);
-		ind = 0;
+		write(2, buffer, index);
+		index = 0;
 	}
 	if (ch != BUFF_FLUSH)
-		buffer[ind++] = ch;
+		buffer[index++] = ch;
 	return (1);
 }
 
@@ -46,35 +46,35 @@ int eputchar(char ch)
 
 int putfd(char ch, int fd)
 {
-	static buffer[WRITE_BUFF_SIZE];
-	static int ind;
+	static char buffer[WRITE_BUFF_SIZE];
+	static int index;
 
-	if (ch == BUFF_FLUSH || ind >= WRITE_BUFF_SIZE)
+	if (ch == BUFF_FLUSH || index >= WRITE_BUFF_SIZE)
 	{
-		write(fd, buffer, ind);
-		ind = 0;
+		write(fd, buffer, index);
+		index = 0;
 	}
 
 	if (ch != BUFF_FLUSH)
-		buffer[ind++] = ch;
+		buffer[index++] = ch;
 	return (1);
 }
 
 /**
 * putsfd - function for printing a string
-* @s: string
+* @str: string
 * @fd: filedescriptor
 * Return: number of characters to be printed
 */
 
-int putsfd(char *s, int fd)
+int putsfd(char *str, int fd)
 {
-	int ind;
+	int index;
 
-	if (!s)
+	if (!str)
 		return (0);
 
-	while (*s)
-		ind += putfd(*s++, fd);
-	return (ind);
+	while (*str)
+		index += putfd(*str++, fd);
+	return (index);
 }
