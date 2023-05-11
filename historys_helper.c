@@ -10,7 +10,7 @@ char *get_history_file(info_t *_info)
 {
 	char *buffer, *_directory;
 
-	directory = _getenv(_info, "HOME=");
+	_directory = _getenvs(_info, "HOME=");
 	if (!_directory)
 		return (NULL);
 	buffer = malloc(sizeof(char) * (_strlen(_directory) +
@@ -62,7 +62,7 @@ int write_history(info_t *_info)
 
 int read_history(info_t *_info)
 {
-	int end = 0, int ind = 0, int lines = 0;
+	int index, end = 0, lines = 0;
 	ssize_t f_size = 0, fd, len;
 	char *name_file = get_history_file(_info), *buffer = NULL;
 	struct stat _st;
@@ -85,15 +85,15 @@ int read_history(info_t *_info)
 	if (len <= 0)
 		return (free(buffer), 0);
 	close(fd);
-	while (ind < f_size)
+	while (index < f_size)
 	{
-		if (buffer[ind] == '\n')
+		if (buffer[index] == '\n')
 		{
-			buffer[ind] = 0, build_history_list(_info, buffer + end, lines++);
-			end = ind + 1;
-		} ind++;
+			buffer[index] = 0, build_history_list(_info, buffer + end, lines++);
+			end = index + 1;
+		} index++;
 	}
-	if (end != ind)
+	if (end != index)
 		build_history_list(_info, buffer + end, lines++);
 	free(buffer);
 	_info->histcount = lines;
@@ -117,7 +117,7 @@ int build_history_list(info_t *_info, char *buffer, int lines)
 
 	if (_info->history)
 		head = _info->history;
-	add_node_end(&head, buffer, lines);
+	addnodeend(&head, buffer, lines);
 	if (!_info->history)
 		_info->history = head;
 	return (0);

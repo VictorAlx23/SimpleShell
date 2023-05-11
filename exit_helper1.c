@@ -13,7 +13,7 @@ char *_strncpy(char *dest, char *src, int num)
 	char *str = dest;
 	int ind = 0, nav = 0;
 
-	while (src[ind] != '\0' && ind < n - 1)
+	while (src[ind] != '\0' && ind < num - 1)
 	{
 		dest[ind] = src[ind];
 		ind++;

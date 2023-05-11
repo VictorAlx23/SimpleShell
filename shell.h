@@ -127,7 +127,7 @@ int _putfd(char, int);
 
 /*Exit_Helper.c */
 char *_strncat(char *, char *, int);
-char *_strchr(char *, int);
+char *_strchr(char *, char);
 
 /* exit_helper1.c */
 char *_strncpy(char *, char *, int);

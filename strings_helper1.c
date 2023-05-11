@@ -41,7 +41,7 @@ int _putchar(char ch)
 	}
 	if (ch != BUFF_FLUSH)
 	{
-		buff[ind] = ch;
+		buffer[ind] = ch;
 		ind++;
 	}
 	return (1);
@@ -49,17 +49,17 @@ int _putchar(char ch)
 
 /**
 * _puts - prints an input string
-* @s: string
+* @str: string
 */
 
-void _puts(char *s)
+void _puts(char *str)
 {
 	int ind;
 
-	if (!s)
+	if (!str)
 		return;
 
-	for (ind = 0; s[ind] != '\0'; ind++)
+	for (ind = 0; str[ind] != '\0'; ind++)
 	{
 		_putchar(str[ind]);
 	}
