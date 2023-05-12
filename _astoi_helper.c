@@ -15,15 +15,12 @@ int interact(info_t *info)
 * @delimt: the delimeter string
 * Return: 1 if true, 0 if false
 */
-int is_delim(char ch, char *delim)
+int is_delimt(char ch, char *delimt)
 {
-<<<<<<< HEAD
 	while (*delimt)
 		if (*delimt++ == ch)
-=======
-	while (*delim)
-		if (*delim++ == ch)
->>>>>>> f4177c02e893a10e2ea2b5d8843704b00869868f
+	while (*delimt)
+		if (*delimt++ == ch)
 			return (1);
 	return (0);
 }
