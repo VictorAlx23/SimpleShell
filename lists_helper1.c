@@ -33,9 +33,9 @@ char **list_to_string(list_t *head)
 	if (strs == NULL)
 		return (NULL);
 	index = 0;
-	while (node; node = node->next)
+       	for (index = 0; node; node = node->next, index++)
 	{
-		str = malloc(_strlen(node->str) + 1);
+		str = malloc(_strlen(node->strs) + 1);
 		if (!str)
 		{
 			j = 0;
@@ -48,9 +48,8 @@ char **list_to_string(list_t *head)
 			return (NULL);
 		}
 
-		str = _strcpy(str, node->str);
+		str = _strcpy(str, node->strs);
 		strs[index] = str;
-		index++;
 	}
 	strs[index] = NULL;
 	return (strs);
@@ -66,15 +65,16 @@ size_t prints_list(const list_t *h1)
 
 	while (h1)
 	{
-		_puts(converts_num(h1->num, 10, 0));
+		_puts(converts_num(h1->nums, 10, 0));
 		_putchar(':');
 		_putchar(' ');
-		_puts(h1->str ? h1->str : "(nil)");
+		_puts(h1->strs ? h1->strs : "(nil)");
 		_puts("\n");
 		h1 = h1->next;
 		index++;
 	}
 	return (index);
+}
 /**
  * node_starts_with - returns node whose string starts with prefix
  * @node: points to list head
@@ -88,7 +88,7 @@ list_t *node_starts_with(list_t *node, char *prefixm, char c1)
 
 	while (node)
 	{
-		p1 = starts_with(node->str, prefixm);
+		p1 = starts_with(node->strs, prefixm);
 		if (p1 && ((c1 == -1) || (*p1 == c1)))
 			return (node);
 		node = node->next;
@@ -108,7 +108,7 @@ ssize_t get_node_index(list_t *head, list_t *node)
 	while (head)
 	{
 		if (head == node)
-			return (i);
+			return (index);
 		head = head->next;
 		index++;
 	}

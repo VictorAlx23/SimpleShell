@@ -100,7 +100,7 @@ int delete_node_at_index(list_t **head, unsigned int ind)
 
 	if (head == NULL || *head == NULL)
 		return (0);
-	if (index == NULL)
+	if (!ind)
 	{
 		node = *head;
 		*head = (*head)->next;
