@@ -53,13 +53,13 @@ void frees_info(info_t *info, int all)
 	{
 		if (!info->cmd_buff)
 			free(info->arg);
-		if (info->env)
-			frees_list(&(info->envs));
+		if (info->envs)
+			freelist(&(info->envs));
 		if (info->history)
-			frees_list(&(info->history));
+			freelist(&(info->history));
 		if (info->alias)
-			frees_list(&(info->alias));
-		ffree(info->environ);
+			freelist(&(info->alias));
+		ffree(info->environs);
 		info->environs = NULL;
 		bfrees((void **)info->cmd_buff);
 		if (info->readfd > 2)

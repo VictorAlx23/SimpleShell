@@ -10,7 +10,8 @@
 
 ssize_t input_buffer(info_t *_info, char **buffer, size_t *length)
 {
-	ssize_t i = 0, j = 0;
+	ssize_t i = 0;
+	size_t j = 0;
 
 	if (!*length)
 	{
@@ -53,7 +54,7 @@ ssize_t gets_input(info_t *_info)
 	static size_t ind, nav, _size;
 	static char *buffer;
 	ssize_t i = 0;
-	char **buffer_ptr = &(_info->args);
+	char **buffer_ptr = &(_info->arg);
 	char *ptr;
 
 	_putchar(BUFF_FLUSH);
@@ -64,10 +65,10 @@ ssize_t gets_input(info_t *_info)
 	{
 		nav = ind;
 		ptr = buffer + ind;
-		check_chain(_info, buffer, &nav, ind, _size);
+		check_chains(_info, buffer, &nav, ind, _size);
 		while (nav < _size)
 		{
-			if (is_chain(_info, buffer, &nav))
+			if (is_chains(_info, buffer, &nav))
 				break;
 			nav++;
 		}
@@ -98,7 +99,7 @@ ssize_t read_buffer(info_t *_info, char *buffer, size_t *_size)
 
 	if (*_size)
 		return (0);
-	i = read(info->readfd, buffer, READ_BUFF_SIZE);
+	i = read(_info->readfd, buffer, READ_BUFF_SIZE);
 
 	if (i >= 0)
 		*_size = i;
@@ -109,11 +110,11 @@ ssize_t read_buffer(info_t *_info, char *buffer, size_t *_size)
 * _getlines - returns the next line in the from STDIN
 * @_info: information struct
 * @buff_ptr: buffer pointer
-* @_size: size of the malloced buff_ptr
+* @lengths: size of the malloced buff_ptr
 * Return: line
 */
 
-int _getlines(info_t *_info, char **buff_ptr, size_t _size)
+int _getlines(info_t *_info, char **buff_ptr, size_t lengths)
 {
 	static char buffer[READ_BUFF_SIZE];
 	char *ptr = NULL, *n_ptr = NULL, *tmp;
@@ -122,8 +123,8 @@ int _getlines(info_t *_info, char **buff_ptr, size_t _size)
 	size_t nav;
 
 	ptr = *buff_ptr;
-	if (ptr && _size)
-		b = *_size;
+	if (ptr && lengths)
+		b = *lengths;
 	if (ind == length)
 		ind = length = 0;
 	i = read_buffer(_info, buffer, &length);
