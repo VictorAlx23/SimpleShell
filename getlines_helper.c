@@ -114,7 +114,7 @@ ssize_t read_buffer(info_t *_info, char *buffer, size_t *_size)
 * Return: line
 */
 
-int _getlines(info_t *_info, char **buff_ptr, size_t lengths)
+int _getlines(info_t *_info, char **buff_ptr, size_t *lengths)
 {
 	static char buffer[READ_BUFF_SIZE];
 	char *ptr = NULL, *n_ptr = NULL, *tmp;
@@ -132,7 +132,7 @@ int _getlines(info_t *_info, char **buff_ptr, size_t lengths)
 		return (-1);
 	tmp = strchr(buffer + ind, '\n');
 	nav = tmp ? 1 + (unsigned int)(tmp - buffer) : length;
-	n_ptr = realloc(ptr, b, b ? b + nav : nav + 1);
+	n_ptr = _reallocs(ptr, b, b ? b + nav : nav + 1);
 
 	if (!n_ptr)
 		return (ptr ? free(ptr), -1 : -1);
@@ -144,8 +144,8 @@ int _getlines(info_t *_info, char **buff_ptr, size_t lengths)
 	ind  = nav;
 	ptr = n_ptr;
 
-	if (_size)
-		*_size = b;
+	if (lengths)
+		*lengths = b;
 	*buff_ptr = ptr;
 	return (b);
 }
@@ -155,7 +155,7 @@ int _getlines(info_t *_info, char **buff_ptr, size_t lengths)
 * @num: signal number
 */
 
-void s_Handler(__attribute__((unsed))int num)
+void s_Handler(__attribute__((unused))int num)
 {
 	_puts("\n");
 	_puts("$ ");

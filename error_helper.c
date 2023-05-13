@@ -69,7 +69,7 @@ int putfd(char ch, int fd)
 
 int putsfd(char *str, int fd)
 {
-	int index;
+	int index = 0;
 
 	if (!str)
 		return (0);

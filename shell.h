@@ -95,7 +95,7 @@ typedef struct pass_info
 
 #define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-NULL}
+	0, 0, 0}
 
 /**
  * struct built_in - contains a builtin string and related function

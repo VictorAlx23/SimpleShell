@@ -62,7 +62,7 @@ int write_history(info_t *_info)
 
 int read_history(info_t *_info)
 {
-	int index, end = 0, lines = 0;
+	int index = 0, end = 0, lines = 0;
 	ssize_t f_size = 0, fd, len;
 	char *name_file = get_history_file(_info), *buffer = NULL;
 	struct stat _st;
