@@ -38,13 +38,13 @@ int _eputchar(char ch)
 }
 
 /**
-* putfd - write a character to fd
+* _putfd - write a character to fd
 * @ch: character
 * @fd: file descriptor
 * Return: 1 (success), -1 (error)
 */
 
-int putfd(char ch, int fd)
+int _putfd(char ch, int fd)
 {
 	static char buffer[WRITE_BUFF_SIZE];
 	static int index;
@@ -61,13 +61,13 @@ int putfd(char ch, int fd)
 }
 
 /**
-* putsfd - function for printing a string
+* _putsfd - function for printing a string
 * @str: string
 * @fd: filedescriptor
 * Return: number of characters to be printed
 */
 
-int putsfd(char *str, int fd)
+int _putsfd(char *str, int fd)
 {
 	int index = 0;
 
@@ -75,6 +75,6 @@ int putsfd(char *str, int fd)
 		return (0);
 
 	while (*str)
-		index += putfd(*str++, fd);
+		index += _putfd(*str++, fd);
 	return (index);
 }

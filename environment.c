@@ -50,6 +50,24 @@ int _shsetenv(info_t *info)
 	return (1);
 }
 /**
+* _shunsetenv - Remove an environment variable
+* @_info: Structure containing potential arguments. Used to maintain
+* constant function prototype.
+* Return: Always 0
+*/
+int _shunsetenv(info_t *_info)
+{
+	int index;
+	if (_info->argc == 1)
+	{
+		_eputs("Too few arguements.\n");
+		return (1);
+	}
+	for (index = 1; index <= _info->argc; index++)
+		_unsetenv(_info, _info->argv[index]);
+	return (0);
+}
+/**
  * populate_env_lists - populate env linked list
  * @info: structure containing potential arguments.
  * Used to maintain constant function prototype

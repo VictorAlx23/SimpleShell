@@ -30,10 +30,10 @@ int hsh(info_t *_info, char **av)
 		}
 		else if (interact(_info))
 			_putchar('\n');
-		free_info(_info, 0);
+		frees_info(_info, 0);
 	}
 	write_history(_info);
-	free_info(_info, 1);
+	frees_info(_info, 1);
 	if (!interact(_info) && _info->status)
 		exit(_info->status);
 	if (r_built_in == -2)
@@ -148,7 +148,7 @@ void fork_cmd(info_t *_info)
 		if (execve(_info->path, _info->argv, get_environs(_info))
 				== -1)
 		{
-			free_info(_info, 1);
+			frees_info(_info, 1);
 			if (errno == EACCES)
 				exit(126);
 			exit(1);

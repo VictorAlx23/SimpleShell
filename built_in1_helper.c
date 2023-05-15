@@ -78,12 +78,12 @@ int prints_alias(list_t *node)
 	return (1);
 }
 /**
-* _shalias - mimics the alias builtin (man alias)
+* _shellalias - mimics the alias builtin (man alias)
 * @info: Structure containing potential arguments. Used to maintain
 * constant function prototype.
 * Return: Always 0
 */
-int _shalias(info_t *info)
+int _shellalias(info_t *info)
 {
 	int index = 0;
 	char *pn = NULL;

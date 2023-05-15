@@ -227,7 +227,7 @@ void s_Handler(int);
 /* getinfo_helper.c */
 void clears_info(info_t *);
 void sets_info(info_t *, char **);
-void free_info(info_t *, int);
+void frees_info(info_t *, int);
 
 /* environs_helper.c */
 char *_getenvs(info_t *, const char *);
