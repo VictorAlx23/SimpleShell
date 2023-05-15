@@ -10,16 +10,16 @@
 char **strtow(char *str, char *delim)
 {
 	char **words;
-	int index, j, iter, nav, num = 0;
+	int index = 0, j, iter, nav, num = 0;
 
 	if (str == NULL || str[0] == 0)
 		return (NULL);
 	if (!delim)
 		delim = " ";
-	index = 0;
 	for (index = 0; str[index] != '\0'; index++)
 	{
-		if (!is_delim(str[index], delim) && (is_delim(str[index + 1], delim) || !str[index + 1]))
+		if (!is_delim(str[index], delim) && (is_delim(str[index + 1],
+						delim) || !str[index + 1]))
 			num++;
 	}
 	if (num == 0)
@@ -43,13 +43,10 @@ char **strtow(char *str, char *delim)
 			free(words);
 			return (NULL);
 		}
-
 		for (nav = 0; nav < iter; nav++)
 			words[j][nav] = str[index++];
 		words[j][nav] = 0;
-	}
-	words[j] = NULL;
-	return (words);
+	}, words[j] = NULL, return (words);
 }
 
 /**

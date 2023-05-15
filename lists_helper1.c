@@ -33,7 +33,7 @@ char **list_to_string(list_t *head)
 	if (strs == NULL)
 		return (NULL);
 	index = 0;
-       	for (index = 0; node; node = node->next, index++)
+	for (index = 0; node; node = node->next, index++)
 	{
 		str = malloc(_strlen(node->strs) + 1);
 		if (!str)

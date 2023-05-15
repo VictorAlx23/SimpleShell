@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
 * _shellexit - exits the shell
 * @info: Structure containing potential arguments. Used to maintain
@@ -6,6 +7,7 @@
 * Return: exits with a given exit status
 * (0) if info.argv[0] != "exit"
 */
+
 int _shellexit(info_t *info)
 {
 	int exitchecks;
@@ -29,18 +31,20 @@ int _shellexit(info_t *info)
 	info->err_nums = -1;
 	return (-2);
 }
+
 /**
 * _shellcd - changes the current directory of the process
 * @info: Structure containing potential arguments. Used to maintain
 * constant function prototype.
 * Return: Always 0
 */
+
 int _shellcd(info_t *info)
 {
 	char *str, *dir, buffer[1024];
 	int chdir_rets;
-	str = getcwd(buffer, 1024);
 
+	str = getcwd(buffer, 1024);
 	if (!str)
 		_puts("TODO: >>getcwd failure emsg here<<\n");
 	if (!info->argv[1])
@@ -56,9 +60,7 @@ int _shellcd(info_t *info)
 	{
 		if (!_getenvs(info, "OLDPWD="))
 		{
-			_puts(str);
-			_putchar('\n');
-			return (1);
+			_puts(str), _putchar('\n'), return (1);
 		}
 		_puts(_getenvs(info, "OLDPWD=")), _putchar('\n');
 		chdir_rets =  /* TODO: what should this be? */
@@ -78,15 +80,18 @@ int _shellcd(info_t *info)
 	}
 	return (0);
 }
+
 /**
 * _shellhelp - changes the current directory of the process
 * @info: Structure containing potential arguments. Used to maintain
 * constant function prototype.
 * Return: Always 0
 */
+
 int _shellhelp(info_t *info)
 {
 	char **_arg_arrays;
+
 	_arg_arrays = info->argv;
 
 	_puts("help call works. Function not yet implemented \n");

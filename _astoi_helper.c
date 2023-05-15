@@ -19,8 +19,6 @@ int is_delimt(char ch, char *delimt)
 {
 	while (*delimt)
 		if (*delimt++ == ch)
-	while (*delimt)
-		if (*delimt++ == ch)
 			return (1);
 	return (0);
 }
