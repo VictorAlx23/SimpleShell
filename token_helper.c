@@ -18,7 +18,7 @@ char **strtow(char *str, char *delim)
 		delim = " ";
 	for (index = 0; str[index] != '\0'; index++)
 	{
-		if (!is_delim(str[index], delim) && (is_delim(str[index + 1],
+		if (!is_delimt(str[index], delim) && (is_delimt(str[index + 1],
 						delim) || !str[index + 1]))
 			num++;
 	}
@@ -29,10 +29,10 @@ char **strtow(char *str, char *delim)
 		return (NULL);
 	for (index = 0, j = 0; j < num; j++)
 	{
-		while (is_delim(str[index], delim))
+		while (is_delimt(str[index], delim))
 			index++;
 		iter = 0;
-		while (!is_delim(str[index + iter], delim) && str[index + iter])
+		while (!is_delimt(str[index + iter], delim) && str[index + iter])
 			iter++;
 		words[j] = malloc(sizeof(char) * (iter + 1));
 		if (!words[j])

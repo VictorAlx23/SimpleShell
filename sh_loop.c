@@ -98,7 +98,7 @@ void find_cmd(info_t *_info)
 	}
 	while (_info->arg[ind])
 	{
-		if (!is_delim(_info->arg[ind], "\t\n"))
+		if (!is_delimt(_info->arg[ind], "\t\n"))
 		{
 			nav++;
 			ind++;

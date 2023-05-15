@@ -196,7 +196,7 @@ int bfrees(void **);
 
 /* _astoi_helper.c */
 int interact(info_t *);
-int is_delim(char, char *);
+int is_delimt(char, char *);
 int is_alpha(int);
 int _astoi(char *);
 
