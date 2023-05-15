@@ -46,7 +46,8 @@ char **strtow(char *str, char *delim)
 		for (nav = 0; nav < iter; nav++)
 			words[j][nav] = str[index++];
 		words[j][nav] = 0;
-	}, words[j] = NULL, return (words);
+	} words[j] = NULL;
+	return (words);
 }
 
 /**
