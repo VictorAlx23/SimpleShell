@@ -61,9 +61,9 @@ int populate_env_lists(info_t *info)
 	size_t index;
 
 	index = 0;
-	while (environs[index])
+	while (info->environs[index])
 	{
-		addnodeend(&node, environs[index], 0);
+		addnodeend(&node, info->environs[index], 0);
 		index++;
 	}
 	info->envs = node;
