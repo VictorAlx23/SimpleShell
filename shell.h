@@ -187,8 +187,8 @@ ssize_t get_node_index(list_t *, list_t *);
 /* variables_helper.c */
 int is_chains(info_t *, char *, size_t *);
 void check_chains(info_t *, char *, size_t *, size_t, size_t);
-int replace_alias(info_t *);
-int replace_vars(info_t *);
+int replaces_alias(info_t *);
+int replaces_vars(info_t *);
 int replace_strings(char **, char *);
 
 /* memory_helper.c */

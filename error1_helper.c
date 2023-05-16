@@ -116,11 +116,11 @@ char *converts_num(long int num, int base, int flags)
 	return (ptr);
 }
 /**
- * removes_comments - function replaces first instance of '#' with '\0'
+ * remove_comments - function replaces first instance of '#' with '\0'
  * @buff: address of the string to modify
  * Return: Always 0;
  */
-void removes_comments(char *buff)
+void remove_comments(char *buff)
 {
 	int index = 0;
 
