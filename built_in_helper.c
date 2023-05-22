@@ -52,7 +52,7 @@ int _shellcd(info_t *info)
 		dir = _getenvs(info, "HOME=");
 		if (!dir)
 			chdir_rets =  /* TODO: what should this be? */
-			chdir((dir = _getenvs(info, "PWD=")) ? dir : "/");
+				chdir((dir = _getenvs(info, "PWD=")) ? dir : "/");
 		else
 		chdir_rets = chdir(dir);
 	}
@@ -65,7 +65,7 @@ int _shellcd(info_t *info)
 		}
 		_puts(_getenvs(info, "OLDPWD=")), _putchar('\n');
 		chdir_rets =  /* TODO: what should this be? */
-		chdir((dir = _getenvs(info, "OLDPWD=")) ? dir : "/");
+			chdir((dir = _getenvs(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
 		chdir_rets = chdir(info->argv[1]);

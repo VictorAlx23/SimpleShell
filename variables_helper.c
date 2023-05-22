@@ -105,28 +105,28 @@ int replaces_vars(info_t *info)
 
 	for (index = 0; info->argv[index]; index++)
 	{
-	if (info->argv[index][0] != '$' || !info->argv[index][1])
-		continue;
-	if (!_strcmp(info->argv[index], "$?"))
-	{
-		replace_strings(&(info->argv[index]),
-		_strdup(converts_num(info->status, 10, 0)));
-		continue;
-	}
-	if (!_strcmp(info->argv[index], "$$"))
-	{
-		replace_strings(&(info->argv[index]),
-		_strdup(converts_num(getpid(), 10, 0)));
-		continue;
-	}
-	node = node_starts_with(info->envs, &info->argv[index][1], '=');
-	if (node)
-	{
-		replace_strings(&(info->argv[index]),
-		_strdup(_strchr(node->strs, '=') + 1));
-		continue;
-	}
-	replace_strings(&info->argv[index], _strdup(""));
+		if (info->argv[index][0] != '$' || !info->argv[index][1])
+			continue;
+		if (!_strcmp(info->argv[index], "$?"))
+		{
+			replace_strings(&(info->argv[index]),
+					_strdup(converts_num(info->status, 10, 0)));
+				continue;
+		}
+		if (!_strcmp(info->argv[index], "$$"))
+		{
+			replace_strings(&(info->argv[index]),
+					_strdup(converts_num(getpid(), 10, 0)));
+			continue;
+		}
+		node = node_starts_with(info->envs, &info->argv[index][1], '=');
+		if (node)
+		{
+			replace_strings(&(info->argv[index]),
+					_strdup(_strchr(node->strs, '=') + 1));
+			continue;
+		}
+		replace_strings(&info->argv[index], _strdup(""));
 	}
 	return (0);
 }

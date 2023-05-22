@@ -68,7 +68,8 @@ char **_strtow2(char *str, char delim)
 	{
 		if ((str[index] != delim && str[index + 1] == delim) ||
 				(str[index] != delim && !str[index + 1]) || str[index + 1] == delim)
-			num++, index++;
+			num++;
+		index++;
 	}
 	if (num == 0)
 		return (NULL);

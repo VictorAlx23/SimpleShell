@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
-* main_ - entry point
+* main - entry point
 * @ac: ard count
 * @av: arg vector
 * Return: 0 on success, 1 on error
 */
 
-int main_(int ac, char **av)
+int main(int ac, char **av)
 {
 	info_t info[] = { INFO_INIT };
 	int fd = 2;
@@ -25,11 +25,11 @@ int main_(int ac, char **av)
 				exit(126);
 			if (errno == ENOENT)
 			{
-				_puts(av[0]);
-				_puts(": 0: Can't open ");
-				_puts(av[1]);
-				_putchar('\n');
-				_putchar(BUFF_FLUSH);
+				_eputs(av[0]);
+				_eputs(": 0: Can't open ");
+				_eputs(av[1]);
+				_eputchar('\n');
+				_eputchar(BUFF_FLUSH);
 				exit(127);
 			}
 			return (EXIT_FAILURE);

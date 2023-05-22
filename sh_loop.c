@@ -17,7 +17,7 @@ int hsh(info_t *_info, char **av)
 		clears_info(_info);
 
 		if (interact(_info))
-			_puts("$");
+			_puts("$ ");
 		_eputchar(BUFF_FLUSH);
 		i = gets_input(_info);
 
@@ -98,13 +98,13 @@ void find_cmd(info_t *_info)
 	}
 	while (_info->arg[ind])
 	{
-		if (!is_delimt(_info->arg[ind], "\t\n"))
+		if (!is_delimt(_info->arg[ind], " \t\n"))
 		{
 			nav++;
-			ind++;
 		}
 		if (!nav)
 			return;
+		ind++;
 	}
 	path = find_path(_info, _getenvs(_info, "PATH="), _info->argv[0]);
 

@@ -32,7 +32,7 @@
 #define USE_STRTOK 0
 
 /* history file macros */
-#define HIST_FILE  "simple_shell_history"
+#define HIST_FILE  ".simple_shell_history"
 #define HIST_MAX  4096
 
 extern char **environs;
@@ -117,6 +117,8 @@ int find_built_in(info_t *);
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
 
+int loophsh(char **);
+
 /* parsing.c file*/
 int is_cmd(info_t *, char *);
 char *dup_chars(char *, int, int);
@@ -134,7 +136,6 @@ char *_strchr(char *, char);
 
 /* exit_helper1.c */
 char *_strncpy(char *, char *, int);
-int main(int ac, char **av);
 
 /* strings_helper.c */
 int _strlen(char *);

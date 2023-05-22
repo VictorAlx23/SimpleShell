@@ -98,7 +98,7 @@ int delete_node_at_index(list_t **head, unsigned int ind)
 	list_t *node, *pre_node;
 	unsigned int index = 0;
 
-	if (head == NULL || *head == NULL)
+	if (!head || !*head)
 		return (0);
 	if (!ind)
 	{
@@ -133,7 +133,7 @@ void freelist(list_t **headptr)
 {
 	list_t *node, *next_node, *head;
 
-	if (headptr == NULL || *headptr == NULL)
+	if (!headptr || !*headptr)
 		return;
 	head = *headptr;
 	node = head;

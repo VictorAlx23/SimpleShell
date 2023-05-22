@@ -55,7 +55,7 @@ int _astoi(char *str)
 			results += (str[index] - '0');
 		}
 		else if (flag_s == 1)
-		flag_s = 2;
+			flag_s = 2;
 	}
 	if (sign == -1)
 		output = -results;

@@ -35,6 +35,8 @@ void sets_info(info_t *info, char **avs)
 			}
 		}
 		for (index = 0; info->argv && info->argv[index]; index++)
+			;
+
 			info->argc = index;
 		replaces_alias(info);
 		replaces_vars(info);
@@ -64,7 +66,7 @@ void frees_info(info_t *info, int all)
 		info->environs = NULL;
 		bfrees((void **)info->cmd_buff);
 		if (info->readfd > 2)
-		close(info->readfd);
+			close(info->readfd);
 		_putchar(BUFF_FLUSH);
 	}
 }
