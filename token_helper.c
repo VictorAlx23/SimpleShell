@@ -37,16 +37,16 @@ char **strtow(char *str, char *delim)
 		words[j] = malloc(sizeof(char) * (iter + 1));
 		if (!words[j])
 		{
-			iter = 0;
-			while (iter < j)
-				free(words[iter]), iter++;
+			for (iter = 0; iter < j; iter++)
+				free(words[iter]);
 			free(words);
 			return (NULL);
 		}
 		for (nav = 0; nav < iter; nav++)
 			words[j][nav] = str[index++];
 		words[j][nav] = 0;
-	} words[j] = NULL;
+	}
+	words[j] = NULL;
 	return (words);
 }
 

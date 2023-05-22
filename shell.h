@@ -1,5 +1,6 @@
 #ifndef _SHELL_H
 #define _SHELL_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -10,7 +11,6 @@
 #include <limits.h>
 #include <fcntl.h>
 #include <errno.h>
-#include <ctype.h>
 
 /* Read & Write Buffer Macros*/
 #define READ_BUFF_SIZE 1024
@@ -35,7 +35,7 @@
 #define HIST_FILE  ".simple_shell_history"
 #define HIST_MAX  4096
 
-extern char **environs;
+extern char **environ;
 
 /**
 * struct liststrs - singly linked list
@@ -62,8 +62,8 @@ typedef struct liststrs
 * @err_nums: error code for exit()s
 * @linecount_flag: if on count this line of input
 * @fname: program filename
-* @envs: linked list local copy of environs
-* @environs: custom modified copy of environs from LL envs
+* @envs: linked list local copy of environ
+* @environ: custom modified copy of environs from LL envs
 * @history: history node
 * @alias: alias node
 * @env_changed: on if environs was changed
@@ -87,7 +87,7 @@ typedef struct pass_info
 	list_t *envs;
 	list_t *history;
 	list_t *alias;
-	char **environs;
+	char **environ;
 	int env_changed;
 	int status;
 	char **cmd_buff;
@@ -101,7 +101,7 @@ typedef struct pass_info
 	0, 0, 0}
 
 /**
- * struct built_in - contains a builtin string and related function
+ * struct built_iin - contains a builtin string and related function
  * @type: the builtin command flag
  * @func: the function
  */
@@ -117,12 +117,13 @@ int find_built_in(info_t *);
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
 
-int loophsh(char **);
 
 /* parsing.c file*/
 int is_cmd(info_t *, char *);
 char *dup_chars(char *, int, int);
 char *find_path(info_t *, char *, char *);
+
+int loophsh(char **);
 
 /* error_helper.c */
 void _eputs(char *);

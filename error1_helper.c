@@ -52,16 +52,16 @@ void prints_error(info_t *info, char *estr)
  */
 int print_deci(int input, int fd)
 {
-	int (*_putchar)(char) = _putchar;
+	int (*__putchar)(char) = _putchar;
 	int index, counts = 0;
 	unsigned int _abs_, currents;
 
 	if (fd == STDERR_FILENO)
-		_putchar = _eputchar;
+		__putchar = _eputchar;
 	if (input < 0)
 	{
 		_abs_ = input;
-		_putchar('-');
+		__putchar('-');
 		counts++;
 	}
 	else
@@ -71,12 +71,12 @@ int print_deci(int input, int fd)
 	{
 		if (_abs_ / index)
 		{
-			_putchar('0' + currents / index);
+			__putchar('0' + currents / index);
 			counts++;
 		}
 		currents %= index;
 	}
-	_putchar('0' + currents);
+	__putchar('0' + currents);
 	counts++;
 
 	return (counts);

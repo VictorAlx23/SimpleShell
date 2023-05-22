@@ -32,18 +32,13 @@ char **list_to_string(list_t *head)
 	strs = malloc(sizeof(char *) * (index + 1));
 	if (!strs)
 		return (NULL);
-	index = 0;
 	for (index = 0; node; node = node->next, index++)
 	{
 		str = malloc(_strlen(node->strs) + 1);
 		if (!str)
 		{
-			j = 0;
-			while (j < index)
-			{
+			for (j = 0; j < index; j++)
 				free(strs[j]);
-				j++;
-			}
 			free(strs);
 			return (NULL);
 		}

@@ -132,7 +132,7 @@ int build_history_list(info_t *_info, char *buffer, int lines)
 int renumber_history(info_t *_info)
 {
 	int count = 0;
-	list_t *head = NULL;
+	list_t *head = _info->history;
 
 	for (head = _info->history; head; head = head->next)
 	{

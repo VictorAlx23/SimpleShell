@@ -62,8 +62,8 @@ void frees_info(info_t *info, int all)
 			freelist(&(info->history));
 		if (info->alias)
 			freelist(&(info->alias));
-		ffree(info->environs);
-		info->environs = NULL;
+		ffree(info->environ);
+		info->environ = NULL;
 		bfrees((void **)info->cmd_buff);
 		if (info->readfd > 2)
 			close(info->readfd);

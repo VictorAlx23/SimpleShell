@@ -99,13 +99,12 @@ void find_cmd(info_t *_info)
 	while (_info->arg[ind])
 	{
 		if (!is_delimt(_info->arg[ind], " \t\n"))
-		{
 			nav++;
-		}
-		if (!nav)
-			return;
 		ind++;
 	}
+	if (!nav)
+		return;
+
 	path = find_path(_info, _getenvs(_info, "PATH="), _info->argv[0]);
 
 	if (path)

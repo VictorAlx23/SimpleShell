@@ -60,10 +60,9 @@ void *_reallocs(void *prev, unsigned int prev_size, unsigned int next_size)
 		return (NULL);
 	prev_size = prev_size < next_size ? prev_size : next_size;
 
-	while (prev_size)
+	while (prev_size--)
 	{
 		ptr[prev_size] = ((char *)prev)[prev_size];
-		prev_size--;
 	}
 	free(prev);
 	return (ptr);
