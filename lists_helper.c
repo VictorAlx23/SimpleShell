@@ -131,18 +131,18 @@ int delete_node_at_index(list_t **head, unsigned int ind)
  */
 void freelist(list_t **headptr)
 {
-	list_t *node, *next_node, *head;
+	list_t *node, *n_node, *h;
 
 	if (!headptr || !*headptr)
 		return;
-	head = *headptr;
-	node = head;
+	h = *headptr;
+	node = h;
 	while (node)
 	{
-		next_node = node->next;
+		n_node = node->next;
 		free(node->strs);
 		free(node);
-		node = next_node;
+		node = n_node;
 	}
 	*headptr = NULL;
 }

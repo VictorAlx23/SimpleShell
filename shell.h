@@ -28,7 +28,7 @@
 #define CONVERT_UNSIGNED 	2
 
 /* getlines macros */
-#define USE_GETLINES 0
+#define USE_GETLINE 0
 #define USE_STRTOK 0
 
 /* history file macros */

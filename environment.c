@@ -17,20 +17,20 @@ int _shellenv(info_t *info)
  * _getenvs - gets the value of an enviroment variable
  * @info: Structure containing potentialo arguments.
  * Used to maintain constant function prototype
- * @name: enviroment variable name
+ * @var_name: enviroment variable name
  * Return: Value of the environment
  */
 
-char *_getenvs(info_t *info, const char *name)
+char *_getenvs(info_t *info, const char *var_name)
 {
 	list_t *node = info->envs;
-	char *p;
+	char *pn;
 
 	while (node)
 	{
-		p = starts_with(node->strs, name);
-		if (p && *p)
-			return (p);
+		pn = starts_with(node->strs, var_name);
+		if (pn && *pn)
+			return (pn);
 		node = node->next;
 	}
 	return (NULL);

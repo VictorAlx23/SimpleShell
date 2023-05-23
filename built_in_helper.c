@@ -21,8 +21,6 @@ int _shellexit(info_t *info)
 			prints_error(info, "Illegal number: ");
 			_eputs(info->argv[1]);
 			_eputchar('\n');
-			_eputs(info->argv[1]);
-			_eputchar('\n');
 			return (1);
 		}
 		info->err_nums = _errastoi(info->argv[1]);

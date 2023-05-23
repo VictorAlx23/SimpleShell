@@ -75,7 +75,7 @@ ssize_t gets_input(info_t *_info)
 		ind = nav + 1;
 		if (ind >= _size)
 		{
-			ind = 0, _size = 0;
+			ind = _size = 0;
 			_info->cmd_buff_type = CMD_NORM;
 		}
 		*buffer_ptr = ptr;
@@ -130,7 +130,7 @@ int _getlines(info_t *_info, char **buff_ptr, size_t *lengths)
 	i = read_buffer(_info, buffer, &length);
 	if (i == -1 || (i == 0 && length == 0))
 		return (-1);
-	tmp = strchr(buffer + ind, '\n');
+	tmp = _strchr(buffer + ind, '\n');
 	nav = tmp ? 1 + (unsigned int)(tmp - buffer) : length;
 	n_ptr = _reallocs(ptr, b, b ? b + nav : nav + 1);
 
@@ -139,7 +139,7 @@ int _getlines(info_t *_info, char **buff_ptr, size_t *lengths)
 	if (b)
 		_strncat(n_ptr, buffer + ind, nav - ind);
 	else
-		_strncat(n_ptr, buffer + ind, nav - ind + 1);
+		_strncpy(n_ptr, buffer + ind, nav - ind + 1);
 	b += nav - ind;
 	ind  = nav;
 	ptr = n_ptr;

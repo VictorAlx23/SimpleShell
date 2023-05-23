@@ -89,9 +89,11 @@ int read_history(info_t *_info)
 	{
 		if (buffer[index] == '\n')
 		{
-			buffer[index] = 0, build_history_list(_info, buffer + end, lines++);
+			buffer[index] = 0;
+			build_history_list(_info, buffer + end, lines++);
 			end = index + 1;
-		} index++;
+		}
+		index++;
 	}
 	if (end != index)
 		build_history_list(_info, buffer + end, lines++);
@@ -132,7 +134,7 @@ int build_history_list(info_t *_info, char *buffer, int lines)
 int renumber_history(info_t *_info)
 {
 	int count = 0;
-	list_t *head = _info->history;
+	list_t *head;
 
 	for (head = _info->history; head; head = head->next)
 	{

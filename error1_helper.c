@@ -46,11 +46,11 @@ void prints_error(info_t *info, char *estr)
 }
 /**
  * print_deci - function printsa decimal (integer) number in (base 10)
- * @input: the input
+ * @input_num: the input
  * @fd: the file decriptor to write to
  * Return: the number of characters printed
  */
-int print_deci(int input, int fd)
+int print_deci(int input_num, int fd)
 {
 	int (*__putchar)(char) = _putchar;
 	int index, counts = 0;
@@ -58,14 +58,14 @@ int print_deci(int input, int fd)
 
 	if (fd == STDERR_FILENO)
 		__putchar = _eputchar;
-	if (input < 0)
+	if (input_num < 0)
 	{
-		_abs_ = input;
+		_abs_ = input_num;
 		__putchar('-');
 		counts++;
 	}
 	else
-		_abs_ = input;
+		_abs_ = input_num;
 	currents = _abs_;
 	for (index = 1000000000; index > 1; index /= 10)
 	{

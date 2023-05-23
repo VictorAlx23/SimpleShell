@@ -36,8 +36,8 @@ void sets_info(info_t *info, char **avs)
 		}
 		for (index = 0; info->argv && info->argv[index]; index++)
 			;
+		info->argc = index;
 
-			info->argc = index;
 		replaces_alias(info);
 		replaces_vars(info);
 	}
@@ -45,14 +45,14 @@ void sets_info(info_t *info, char **avs)
 /**
 * frees_info - frees info_t struct fields
 * @info: struct address
-* @all: true if freeing all fields
+* @everything: true if freeing all fields
 */
-void frees_info(info_t *info, int all)
+void frees_info(info_t *info, int everything)
 {
 	ffree(info->argv);
 	info->argv = NULL;
 	info->path = NULL;
-	if (all)
+	if (everything)
 	{
 		if (!info->cmd_buff)
 			free(info->arg);

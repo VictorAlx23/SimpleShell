@@ -37,12 +37,10 @@ char *_strncat(char *dest, char *src, int n)
 
 char *_strchr(char *str, char ch)
 {
-	while (*str != '\0')
-	{
+	do {
 		if (*str == ch)
 			return (str);
-		str++;
-	}
+	} while (*str != '\0');
 	return (NULL);
 }
 
