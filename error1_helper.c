@@ -60,7 +60,7 @@ int print_deci(int input_num, int fd)
 		__putchar = _eputchar;
 	if (input_num < 0)
 	{
-		_abs_ = input_num;
+		_abs_ = -input_num;
 		__putchar('-');
 		counts++;
 	}

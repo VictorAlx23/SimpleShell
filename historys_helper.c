@@ -92,8 +92,7 @@ int read_history(info_t *_info)
 			buffer[index] = 0;
 			build_history_list(_info, buffer + end, lines++);
 			end = index + 1;
-		}
-		index++;
+		} index++;
 	}
 	if (end != index)
 		build_history_list(_info, buffer + end, lines++);

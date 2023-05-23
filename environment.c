@@ -66,9 +66,10 @@ int _shsetenv(info_t *info)
 int _shunsetenv(info_t *_info)
 {
 	int index;
+
 	if (_info->argc == 1)
 	{
-		_eputs("Too few arguements.\n");
+		_eputs("Too few arguments.\n");
 		return (1);
 	}
 	for (index = 1; index <= _info->argc; index++)
